@@ -1,6 +1,9 @@
 console.log('ok')
 
 import Vue from 'vue'
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
+
 import router from './router'
 
 
