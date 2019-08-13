@@ -2,7 +2,10 @@
     <div class="app-container">
         <mt-header fixed title="Header"></mt-header>
 
-        <router-view></router-view>
+        <transition>
+            <router-view></router-view>
+        </transition>
+        
 
         <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item" to="/home">
@@ -18,7 +21,7 @@
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-item" to="/search">
-				<span class="mui-icon mui-icon-gear"></span>
+				<span class="mui-icon mui-icon-search"></span>
 				<span class="mui-tab-label">搜索</span>
 			</router-link>
 		</nav>        
@@ -37,6 +40,20 @@ export default {
 
 <style lang="scss" scoped>
 .app-container{
-    padding: 40px 10px 20px;
+    padding: 40px 0 20px;
+    overflow-x: hidden;
+}
+
+.v-enter{
+    opacity: 0;
+    transform: translateX(100%); 
+}
+.v-leave-to{
+    opacity: 0;
+    transform: translateX(-100%); 
+    position: absolute;
+}
+.v-enter-active, .v-leave-active{
+    transition: all 0.5s ease;
 }
 </style>
