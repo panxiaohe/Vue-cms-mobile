@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss" scoped>
 .app-container{
-    padding: 40px 0 20px;
+    padding: 40px 0 50px;
     overflow-x: hidden;
 }
 
