@@ -1,5 +1,5 @@
 <template>
-    <div class="newsdetail-container">
+    <div class="news-container">
         <h3 class="title">{{ newsDetail.title }}</h3>
         <p class="subtitle">
             <span>发布时间：{{ newsDetail.add_time }}</span>
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss">
-.newsdetail-container{
+.news-container{
     padding: 0 5px;
     .title{
         font-size: 16px;

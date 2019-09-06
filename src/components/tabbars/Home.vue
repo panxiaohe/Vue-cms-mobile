@@ -13,14 +13,14 @@
           <img src="../../assets/images/menu1.png" alt="">
           <div class="mui-media-body">新闻资讯</div>
         </router-link></li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/pictures">
           <img src="../../assets/images/menu2.png" alt="">
           <div class="mui-media-body">图片分享</div>
-        </a></li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+        </router-link></li>
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/goodsList">
           <img src="../../assets/images/menu3.png" alt="">
           <div class="mui-media-body">商品购买</div>
-        </a></li>
+        </router-link></li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
           <img src="../../assets/images/menu4.png" alt="">
           <div class="mui-media-body">留言反馈</div>
@@ -49,7 +49,7 @@ export default {
   methods: {
     getBannerList() {
         this.$http.get("api/getlunbo").then(result => {
-          console.log(result.body);
+        //   console.log(result.body);
           var result = result.body;
           if (result.status == 0) {
             this.bannerList = result.message;
