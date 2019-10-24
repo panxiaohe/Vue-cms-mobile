@@ -1,49 +1,23 @@
 <template>
     <div class="goods-container">
         <ul class="goods-list">
-            <li>
-                <img src="http://ofv795nmp.bkt.clouddn.com//upload/201504/20/thumb_201504200119256512.jpg">
-                <p class="goods-name">小米（Mi）小米Note 16G双网通版</p>
+            <router-link v-for="item in goodsList" :key="item.id" :to="'/home/goodsDetail/'+item.id" tag="li">
+                <img :src="item.img_url">
+                <p class="goods-name">{{ item.title }}</p>
                 <div class="goods-info">
                     <p class="goods-price">
-                        <span class="now">¥899</span>
-                        <span class="old">¥999</span>
+                        <span class="now">¥{{ item.sell_price}}</span>
+                        <span class="old">¥{{ item.market_price }}</span>
                     </p>
                     <p class="goods-sell">
                         <span>热卖中</span>
-                        <span>剩60件</span>
+                        <span>剩{{ item.stock_quantity }}件</span>
                     </p>
                 </div>
-            </li>
-            <li>
-                <img src="http://ofv795nmp.bkt.clouddn.com//upload/201504/20/thumb_201504200214471783.jpg">
-                <p class="goods-name">尼康(Nikon)D3300套机（18-55mm f/3.5-5.6G VRII）（黑色）</p>
-                <div class="goods-info">
-                    <p class="goods-price">
-                        <span class="now">¥899</span>
-                        <span class="old">¥999</span>
-                    </p>
-                    <p class="goods-sell">
-                        <span>热卖中</span>
-                        <span>剩60件</span>
-                    </p>
-                </div>
-            </li>
-            <li>
-                <img src="http://ofv795nmp.bkt.clouddn.com//upload/201504/20/thumb_201504200119256512.jpg">
-                <p class="goods-name">小米（Mi）小米Note 16G双网通版</p>
-                <div class="goods-info">
-                    <p class="goods-price">
-                        <span class="now">¥899</span>
-                        <span class="old">¥999</span>
-                    </p>
-                    <p class="goods-sell">
-                        <span>热卖中</span>
-                        <span>剩60件</span>
-                    </p>
-                </div>
-            </li>
+            </router-link>
         </ul>
+
+        <mt-button type="danger" size="large" @click="getMore()">加载更多</mt-button>
     </div>
 </template>
 
@@ -51,14 +25,26 @@
 export default {
     data(){
         return {
-
+            pageIndex: 1,
+            goodsList: []
         }
     },
     methods: {
-
+        getGoodsList(){
+            this.$http.get('api/getgoods?pageindex='+this.pageIndex).then(result => {
+                // console.log(result)
+                if(result.body.status == 0){
+                    this.goodsList = this.goodsList.concat(result.body.message)
+                }
+            })
+        },
+        getMore(){
+            this.pageIndex++
+            this.getGoodsList()
+        }
     },
     created(){
-
+        this.getGoodsList()
     }
 }
 </script>

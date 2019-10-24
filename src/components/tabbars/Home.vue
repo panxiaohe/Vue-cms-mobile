@@ -1,12 +1,6 @@
 <template>
   <div>
-    <mt-swipe :auto="4000">
-      <mt-swipe-item
-        v-for="item in bannerList"
-        :key="item.id">
-        <a :href="item.url"><img :src="item.img"></a>
-      </mt-swipe-item>
-    </mt-swipe>
+    <v-banner :bannerList="bannerList"></v-banner>
 
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/newsList">
@@ -38,6 +32,8 @@
 </template>
 
 <script>
+import Banner from '../subcomponents/Banner.vue'
+
 import { Toast } from "mint-ui";
 
 export default {
@@ -45,6 +41,9 @@ export default {
     return {
       bannerList: []
     };
+  },
+  components: {
+      'v-banner': Banner
   },
   methods: {
     getBannerList() {
@@ -66,17 +65,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.mint-swipe {
-  height: 200px;
-
-  .mint-swipe-item {
-    img {
-      // width: 100%;
-      height: 100%;
-    }
-  }
-}
-
 .mui-grid-view.mui-grid-9{
     border: 0 none;
     background-color: #fff;

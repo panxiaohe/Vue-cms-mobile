@@ -41,7 +41,7 @@ Vue.filter('dateFormat', function(dateStr, pattern='YYYY-MM-DD'){
 
 // 全局组件
 // import Commont from './components/subcomponents/Comment.vue'
-// Vue.component('commont-box', Commont)
+// Vue.component('v-comment', Commont)
 
 new Vue({
     el: '#app',

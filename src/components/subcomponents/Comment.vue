@@ -22,6 +22,7 @@ import {Toast} from 'mint-ui'
 export default {
     data(){
         return{
+            // 要从parent获取数据 需保证parent有这个数据！
             id: this.$parent.id,
             pageindex: 1,
             comments: [],
