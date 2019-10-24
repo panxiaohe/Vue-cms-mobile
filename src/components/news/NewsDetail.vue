@@ -2,18 +2,18 @@
     <div class="news-container">
         <h3 class="title">{{ newsDetail.title }}</h3>
         <p class="subtitle">
-            <span>发布时间：{{ newsDetail.add_time }}</span>
+            <span>发布时间：{{ newsDetail.add_time | dateFormat}}</span>
             <span>点击：{{ newsDetail.click }}次</span>
         </p>
         <hr>
         <div class="content" v-html="newsDetail.content"></div>
 
-        <commont-box></commont-box>
+        <v-comment></v-comment>
     </div>
 </template>
 
 <script>
-import Commont from '../subcomponents/Comment.vue'
+import Comment from '../subcomponents/Comment.vue'
 
 export default {
     data(){
@@ -23,7 +23,7 @@ export default {
         }
     },
     components: {
-        'commont-box': Commont
+        'v-comment': Comment
     },
     methods: {
         getNewsDetail(){

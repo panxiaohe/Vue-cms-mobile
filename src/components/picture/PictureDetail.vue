@@ -14,7 +14,7 @@
     <div class="content" v-html="pictureDetail.content"></div>
 
     <!-- 评论组件 -->
-    <comment-box></comment-box>
+    <v-comment></v-comment>
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
     };
   },
   components: {
-    "comment-box": Comment
+    "v-comment": Comment
   },
   methods: {
     getPictureDetail() {
